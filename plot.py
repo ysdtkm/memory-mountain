@@ -40,9 +40,9 @@ def pretty_size(logsize,pos):
     while size>1000:
         size/=1000
         unit+=1
-    return str(size)+suffixes[unit]
+    return f"{size:.0f}{suffixes[unit]}"
 
-fig = plt.figure()
+fig = plt.figure(constrained_layout=True)
 ax = fig.gca(projection='3d')
 
 
@@ -50,7 +50,7 @@ if len(sys.argv)==2:
     with open(sys.argv[1]) as f:
         data = f.read()
 else:
-    print "usage: plot.py DATAFILE"
+    print("usage: plot.py DATAFILE")
     sys.exit(1)
     
 data = data.splitlines()
@@ -79,4 +79,4 @@ ax.invert_yaxis()
 ax.set_zlabel('Throughput')
 ax.zaxis.set_major_formatter(mpl.ticker.FuncFormatter(pretty_speed))
 
-plt.show()
+fig.savefig("out.png", bbox_inches="tight", dpi=150)

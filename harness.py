@@ -17,12 +17,10 @@ for mag in range(10,27): # from 2^10 (1kB) to 2^27 (64MB)
 
         results=[]
         for repeat in range(count):
-            log=subprocess.check_output(["./benchmark",
-                                         str(size),
-                                         str(stride)]);
+            log=subprocess.getoutput(f"./benchmark {str(size)} {str(stride)}");
 
             for l in log.splitlines():
-                if "MB/s" in l:
+                if "MB/s" in str(l):
                     results.append( float(l[ l.find('=')+1: l.find('MB/s') ]) ) 
 
-        print size,stride,np.median(results)
+        print(size,stride,np.median(results))
