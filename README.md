@@ -135,3 +135,5 @@ Notes:
   numbers,  so pay  attention to  the vertical  scale when  looking at
   plots from different machines.
 
+# Result on Thinkpad X1 Carbon 2015, Windows Subsystem on Linux
+<img src="out.png">
